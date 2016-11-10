@@ -50,5 +50,26 @@
   font-size:20px;
   font-family: ".SFNSText-Light",".SFUIText-Light",".HelveticaNeueDeskInterface-Light","HelveticaNeue","Segoe UI","Roboto","Arial","Apple Color Emoji",sans-serif;
   padding-left: 40px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.news_head {
+  position: relative;
+  width: 450px;
+  padding-left: 40px;
+  margin-top: 30px;
+}
+
+.twitter_logo {
+  position: relative;
+  width: 75px;
+  padding-left: 40px;
+  margin-top: 30px;
+}
+
+.twitter {
+  font-size: 20px;
+  font-family: ".SFNSText-Light",".SFUIText-Light",".HelveticaNeueDeskInterface-Light","HelveticaNeue","Segoe UI","Roboto","Arial","Apple Color Emoji",sans-serif;
+  padding-left: 40px;
+  padding-bottom: 10px;
 }

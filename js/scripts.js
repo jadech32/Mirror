@@ -51,6 +51,10 @@ function renderTime() {
     setTimeout("renderTime()",1000);
 }
 
+// TODOIST
+
+
+
 // WEATHER
 
 function renderWeather() {
@@ -108,13 +112,13 @@ function renderImage() {
         } else {
           show_image(clear_day,72,72,"Clear Day");
         }
-      } else if(fore.includes("Partly Cloudy")) {
+      } else if((fore.includes("Partly Cloudy")) || (fore.includes("Scattered Clouds"))){
         if( h >= 18) {
           show_image(part_cloudy_night,72,72,"Partly Cloudy");
         } else {
           show_image(part_cloudy_day,72,72,"Partly Cloudy");
         }
-      } else if(fore.includes("Cloudy")) {
+      } else if(fore.includes("Cloudy") || fore.includes("Overcast")) {
         show_image(cloudy,72,72,"Cloudy");
       } else if((fore.includes("Snow")) || (fore.includes("Flurries"))) {
         show_image(snow,72,72,"Snow");
@@ -155,13 +159,37 @@ news.onreadystatechange = function () {
     document.getElementById('news_5').innerHTML = nr.results[4].title;
   }
 }
- setTimeout("renderNews()",3.6E6);
+ setTimeout("renderNews()",600000); // once every 10 minutes
 }
 
+// Twitter API
+function tweet() {
+var Twit = require('twit');
+var config = require('./js/config.js')
+var T = new Twit(config.Config);
 
 
+  var params = {
+    slug: 'Sneakers',
+    owner_screen_name: 'GnarlyNarwhal1',
+    count: 5,
 
+  }
 
+  T.get('lists/statuses', params, gotData);
+
+// Include quoted text if quoted  or RT
+  function gotData(err, data, response) {
+    console.log("@"+data[0].user.screen_name + ":" + " " + data[0].text);
+    document.getElementById('tweet_1').innerHTML = "@" + data[0].user.screen_name + ":" + " " + data[0].text;
+    document.getElementById('tweet_2').innerHTML = "@" + data[1].user.screen_name + ":" + " " + data[1].text;
+    document.getElementById('tweet_3').innerHTML = "@" + data[2].user.screen_name + ":" + " " + data[2].text;
+    document.getElementById('tweet_4').innerHTML = "@" + data[3].user.screen_name + ":" + " " + data[3].text;
+    document.getElementById('tweet_5').innerHTML = "@" + data[4].user.screen_name + ":" + " " + data[4].text;
+  }
+
+  setTimeout("tweet()",5000);
+}
 
 // ONLOAD FUNCTIONS
 
@@ -170,4 +198,5 @@ function startFunctions() {
   renderWeather();
   renderImage();
   renderNews();
+  tweet();
 }
