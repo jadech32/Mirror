@@ -50,7 +50,8 @@ function renderTime() {
     myMonth.innerText = montharray[month] + " " + year;
     setTimeout("renderTime()",1000);
 }
-
+// EXPORT VARIABLES
+var config = require('./js/config.js')
 // TODOIST
 
 
@@ -58,8 +59,11 @@ function renderTime() {
 // WEATHER
 
 function renderWeather() {
+
+
   var weather = new XMLHttpRequest();
-  weather.open("GET","http://api.wunderground.com/api/7ef8fc32acd04dd5/conditions/q/Canada/Vancouver.json", false);
+
+  weather.open("GET",config.weather, false);
   weather.send(null);
 
   var r = JSON.parse(weather.response);
@@ -78,8 +82,9 @@ function renderWeather() {
 // IMAGE
 
 function renderImage() {
+
   var weather = new XMLHttpRequest();
-  weather.open("GET","http://api.wunderground.com/api/7ef8fc32acd04dd5/conditions/q/Canada/Vancouver.json", false);
+  weather.open("GET",config.weather, false);
   weather.send(null);
 
   var r = JSON.parse(weather.response);
@@ -144,7 +149,7 @@ function show_image(src, width, height, alt) {
 
 function renderNews() {
 var news = new XMLHttpRequest();
-news.open("GET","http://api.nytimes.com/svc/topstories/v1/home.json?api-key=cc5ee843469c4fbf95ce3aca5ee099f9");
+news.open("GET",config.nyTimes);
 news.responseType = 'json';
 news.send(null);
 news.onreadystatechange = function () {
@@ -166,7 +171,7 @@ news.onreadystatechange = function () {
 
 function tweet() {
 var Twit = require('twit');
-var config = require('./js/config.js')
+
 var T = new Twit(config.Config);
 
 

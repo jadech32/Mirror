@@ -8,5 +8,14 @@ var config = {
   access_token_secret:  'eUBzL1c148WAYatmlN6CwiHk6i3KGmOr5PyybEizDS0Ie',
   timeout_ms:           5*1000,  // 5s interval - Maximum 180 calls per minute
 };
+// Weather API config
+var weatherAPI = "http://api.wunderground.com/api/7ef8fc32acd04dd5/conditions/q/Canada/Vancouver.json";
+
+// NYTimes API config
+var nyTimes = "http://api.nytimes.com/svc/topstories/v1/home.json?api-key=cc5ee843469c4fbf95ce3aca5ee099f9";
+
+
 // So that variable can be accessed
-exports.Config = config;
+module.exports.Config = config;
+module.exports.weather = weatherAPI;
+module.exports.nyTimes = nyTimes;
