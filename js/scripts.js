@@ -163,6 +163,7 @@ news.onreadystatechange = function () {
 }
 
 // Twitter API
+
 function tweet() {
 var Twit = require('twit');
 var config = require('./js/config.js')
