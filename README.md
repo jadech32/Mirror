@@ -13,7 +13,9 @@ Inspired by Max Braun's [mirror](https://github.com/maxbbraun/mirror)
 ```
 npm install
 ```
-3. Start the program
+Start the program
 ```
 npm start
+
+Note: Enter API Keys in config.js before starting program
 ```
