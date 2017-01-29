@@ -47,7 +47,7 @@ function renderTime() {
     myDate.innerText = dayarray[day]
 
     var myMonth = document.getElementById("monthDisplay");
-    myMonth.innerText = montharray[month] + " " + year;
+    myMonth.innerText = montharray[month] + " " + daym;
     setTimeout("renderTime()",1000);
 }
 // EXPORT VARIABLES
@@ -67,8 +67,11 @@ function renderWeather() {
   weather.send(null);
 
   var r = JSON.parse(weather.response);
-  var temp = r.current_observation.temp_c + "°";
-  var fore = r.current_observation.weather
+  var holder = String(r.currently.temperature).substring(0,2);
+  var temp = holder + "°";
+  var fore = r.hourly.summary;
+  var underbar = String(r.hourly.data[0].precipProbability) + "%";
+
 
   var myWeather = document.getElementById("weather");
   myWeather.innerText = temp;
@@ -76,11 +79,14 @@ function renderWeather() {
   var myForecast = document.getElementById("forecast");
   myForecast.innerText = fore;
 
+  var myUnderbar = document.getElementById("underbar");
+  myUnderbar.innerText = underbar;
+
   setTimeout("renderWeather()",3.6E6);
 }
 
 // IMAGE
-
+/*
 function renderImage() {
 
   var weather = new XMLHttpRequest();
@@ -144,7 +150,7 @@ function show_image(src, width, height, alt) {
         img.alt = alt;
         document.getElementById("img").appendChild(img);
 }
-
+*/
 // News API
 
 function renderNews() {
@@ -175,14 +181,7 @@ var Twit = require('twit');
 var T = new Twit(config.Config);
 
 
-  var params = {
-    slug: 'Sneakers',
-    owner_screen_name: 'GnarlyNarwhal1',
-    count: 5,
-
-  }
-
-  T.get('lists/statuses', params, gotData);
+  T.get('lists/statuses',config.params, gotData);
 
 // Include quoted text if quoted  or RT
   function gotData(err, data, response) {
@@ -197,12 +196,16 @@ var T = new Twit(config.Config);
   setTimeout("tweet()",5000);
 }
 
+// TODOIST
+
+
+
 // ONLOAD FUNCTIONS
 
 function startFunctions() {
   renderTime();
   renderWeather();
-  renderImage();
+  //renderImage();
   renderNews();
   tweet();
 }
