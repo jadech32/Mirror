@@ -3,7 +3,7 @@ Smart Mirror UI
 
 Project made on electron for a smart mirror UI.
 
-![Smart Mirror](http://prntscr.com/f6xjtq)
+![Smart Mirror](http://image.prntscr.com/image/aed0c38a45864aa38c903e963c2eb52d.png)
 
 Inspired by Max Braun's [mirror](https://github.com/maxbbraun/mirror)
 
