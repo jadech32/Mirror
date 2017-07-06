@@ -1,5 +1,5 @@
 # Mirror
-Smart Mirror UI
+Smart Mirror UI - Current rewrite of app is in my other repo [here](https://github.com/jadech32/mirrortest)
 
 Project made on electron for a smart mirror UI.
 
